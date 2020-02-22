@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<title>gradient maker</title>
+	</head>
+	<body>
+		<div id="container">
+			<div class="gradientBox" id="infoDiv"><div class="gradient"><div class="gradient2"></div></div>click preview to select corner</div>
+			<div>
+				<span id="gradientPreview-container">
+					<div class="gradientBox" id="gradientPreview" onclick="selectCorner(event)">
+						<div id="gradientPreview-cursor" style="left:-116px;top:-20px;"></div>
+						<div id="gradient">
+							<div id="gradient2"></div>
+						</div>
+					</div>
+				</span>
+				<span class="gradientBox" id="currentColor-container">
+					<div id="currentColor">
+						<input type="color" id="colorPicker">
+					</div>
+				</span>
+			</div>
+			<div class="gradientBox" id="sliderDiv">
+				<div class="gradient"><div class="gradient2"></div></div>
+				<div class="slider-container">
+					<img class="colorName" src="img/ff7_rgb.png" style="object-position: 0 0">
+					<span class="slider-value"></span>
+					<span class="slider-span">
+						<div class="slider-handle"></div>
+					</span>
+				</div>
+				<div class="slider-container">
+					<img class="colorName" src="img/ff7_rgb.png" style="object-position: -32px 0">
+					<span class="slider-value"></span>
+					<span class="slider-span">
+						<div class="slider-handle"></div>
+					</span>
+				</div>
+				<div class="slider-container">
+					<img class="colorName" src="img/ff7_rgb.png" style="object-position: -64px 0">
+					<span class="slider-value"></span>
+					<span class="slider-span">
+						<div class="slider-handle"></div>
+					</span>
+				</div>
+			</div>
+			<div>
+				<span class="button" onclick="resetColors()">
+					<div class="gradientBox">
+						<div id="gradient">
+							<div id="gradient2"></div>
+						</div>
+						default
+					</div>
+				</span>
+				<span class="button" onclick="copyChatString()">
+					<div class="gradientBox">
+						<div id="gradient">
+							<div id="gradient2"></div>
+						</div>
+						copy chatstring
+					</div>
+				</span>
+			</div>
+		</div>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>
