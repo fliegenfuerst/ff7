@@ -117,23 +117,23 @@ function getChatString(){
 	return "!setColors "+toColorString(settings[0])+" "+toColorString(settings[1])+" "+toColorString(settings[2])+" "+toColorString(settings[3]);
 }
 function dragElement(elmnt,index) {
-	let pos=nextPos=temp=0;
+	let pos=nextPos=temp=x=0;
 	let width=elmnt.parentNode.offsetWidth-elmnt.offsetWidth-4;
 	elmnt.onmousedown=elmnt.ontouchstart=function(e){
-		document.body.style.cursor="grabbing";
-		elmnt.style.cursor="grabbing";
+		document.body.classList.add("grabbed");
+		elmnt.classList.add("grabbed");
 		e=e||window.event;
 		e.preventDefault();
 		pos=e.clientX;
 		document.onmouseup=document.ontouchend=function(){
 			document.onmouseup=document.ontouchend=document.onmousemove=document.ontouchmove=null;
-			document.body.style.cursor="";
-			elmnt.style.cursor="grab";
+			document.body.classList.remove("grabbed");
+			elmnt.classList.remove("grabbed");
 		};
 		document.onmousemove=document.ontouchmove=function(e){
 			e=e||window.event;
 			e.preventDefault();
-			let x=event.clientX||e.touches[0].clientX;
+			x=event.clientX||e.touches[0].clientX;
 			nextPos=elmnt.offsetLeft-pos+x;
 			if(nextPos<-4){
 				temp=-4;
