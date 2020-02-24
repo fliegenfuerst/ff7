@@ -1,16 +1,28 @@
 let container=document.getElementById("container");
+let gradient=document.getElementById("gradient");
+let gradient2=document.getElementById("gradient2");
+let cornerCursor=document.getElementById("gradientPreview-cursor");
 let sliderValues=document.getElementsByClassName("slider-value");
 let sliders=document.getElementsByClassName("slider-handle");
-let cornerCursor=document.getElementById("gradientPreview-cursor");
 let currentCorner=0;
 let currentColor=document.getElementById("currentColor");
 let colorPicker=document.getElementById("colorPicker");
-let settings=[];
-if(localStorage.getItem("settings")!==null){
-	settings=JSON.parse(localStorage.getItem("settings"));
-}else{
-	settings=[[0,0,176],[0,0,128],[0,0,80],[0,0,32]];
-	localStorage.setItem("settings",JSON.stringify(settings));
+let settings=[[0,0,176],[0,0,128],[0,0,80],[0,0,32]];
+let storageEnabled=false;
+let test='test';
+try {
+	localStorage.setItem(test, test);
+	localStorage.removeItem(test);
+	storageEnabled=true;
+} catch(e) {
+	storageEnabled=false;
+}
+if(storageEnabled) {
+	if(localStorage.getItem("settings")!==null){
+		settings=JSON.parse(localStorage.getItem("settings"));
+	}else{
+		localStorage.setItem("settings",JSON.stringify(settings));
+	}
 }
 for(let i=0;i<sliders.length;i++){
 	dragElement(sliders[i],i);
@@ -67,7 +79,6 @@ function selectCorner(e){
 		currentCorner=index;
 		updateView(false);
 	}
-
 }
 function updateView(slideEvent){
 	if(!slideEvent){
@@ -79,7 +90,9 @@ function updateView(slideEvent){
 	sliderValues[1].innerText=getScrollValueNumber(settings[currentCorner][1]);
 	sliderValues[2].innerText=getScrollValueNumber(settings[currentCorner][2]);
 	currentColor.style.backgroundColor="#"+toColorString(settings[currentCorner]);
-	localStorage.setItem("settings",JSON.stringify(settings));
+	if(storageEnabled){
+		localStorage.setItem("settings",JSON.stringify(settings));
+	}
 	updateGradient();
 }
 function colorStringToValues(hex){
