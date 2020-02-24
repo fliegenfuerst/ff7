@@ -133,13 +133,13 @@ function dragElement(elmnt,index) {
 		document.onmousemove=document.ontouchmove=function(e){
 			e=e||window.event;
 			e.preventDefault();
-			nextPos=elmnt.offsetLeft-pos+event.clientX||event.touches[0].pageX;
+			nextPos=elmnt.offsetLeft-pos+event.clientX||event.touches[0].clientX;
 			if(nextPos<-4){
 				temp=-4;
 			}else if(nextPos>width){
 				temp=width;
 			}else{
-				pos=event.clientX||event.touches[0].pageX;
+				pos=event.clientX||event.touches[0].clientX;
 				temp=nextPos;
 			}
 			elmnt.style.left=temp+"px";
