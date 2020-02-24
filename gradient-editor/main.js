@@ -133,19 +133,18 @@ function dragElement(elmnt,index) {
 		document.onmousemove=document.ontouchmove=function(e){
 			e=e||window.event;
 			e.preventDefault();
-			nextPos=elmnt.offsetLeft-pos+event.clientX;
+			nextPos=elmnt.offsetLeft-pos+event.clientX||event.touches[0].pageX;
 			if(nextPos<-4){
 				temp=-4;
 			}else if(nextPos>width){
 				temp=width;
 			}else{
-				pos=event.clientX;
+				pos=event.clientX||event.touches[0].pageX;
 				temp=nextPos;
 			}
 			elmnt.style.left=temp+"px";
 			settings[currentCorner][index]=Math.floor((temp+4)/(width+4)*255);
 			updateView(true);
-			console.log(event);
 		};
 	};	
 }
