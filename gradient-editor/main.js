@@ -133,13 +133,14 @@ function dragElement(elmnt,index) {
 		document.onmousemove=document.ontouchmove=function(e){
 			e=e||window.event;
 			e.preventDefault();
-			nextPos=elmnt.offsetLeft-pos+event.clientX||e.touches[0].clientX;
+			let x=event.clientX||e.touches[0].clientX;
+			nextPos=elmnt.offsetLeft-pos+x;
 			if(nextPos<-4){
 				temp=-4;
 			}else if(nextPos>width){
 				temp=width;
 			}else{
-				pos=event.clientX||e.touches[0].clientX;
+				pos=x;
 				temp=nextPos;
 			}
 			elmnt.style.left=temp+"px";
