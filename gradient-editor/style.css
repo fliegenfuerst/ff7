@@ -137,7 +137,10 @@ body{
 	height:36px;
 	top:-4px;
 	left:-4px;
+	cursor: move;
 	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
 	border:4px solid transparent;
 	border-image:url(img/ff7_sliderHandleBorder.png) 1 1 repeat;
 }
@@ -147,4 +150,9 @@ body{
 	margin-left: -6px;
 	margin-right: -6px;
 	cursor: pointer;
+}
+.grabbed{
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
 }
