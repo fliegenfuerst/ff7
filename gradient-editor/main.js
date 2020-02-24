@@ -2,11 +2,11 @@ let container=document.getElementById("container");
 let gradient=document.getElementById("gradient");
 let gradient2=document.getElementById("gradient2");
 let cornerCursor=document.getElementById("gradientPreview-cursor");
+let currentColor=document.getElementById("currentColor");
+let colorPicker=document.getElementById("colorPicker");
 let sliderValues=document.getElementsByClassName("slider-value");
 let sliders=document.getElementsByClassName("slider-handle");
 let currentCorner=0;
-let currentColor=document.getElementById("currentColor");
-let colorPicker=document.getElementById("colorPicker");
 let settings=[[0,0,176],[0,0,128],[0,0,80],[0,0,32]];
 let storageEnabled=false;
 let test='test';
@@ -119,15 +119,14 @@ function getChatString(){
 function dragElement(elmnt,index) {
 	let pos=nextPos=temp=0;
 	let width=elmnt.parentNode.offsetWidth-elmnt.offsetWidth-4;
-	elmnt.onmousedown=elmnt.touchstart=function(e){
+	elmnt.onmousedown=elmnt.ontouchstart=function(e){
 		document.body.style.cursor="grabbing";
 		elmnt.style.cursor="grabbing";
 		e=e||window.event;
 		e.preventDefault();
 		pos=e.clientX;
 		document.onmouseup=document.ontouchend=function(){
-			document.onmouseup = null;
-			document.onmousemove = null;
+			document.onmouseup=document.ontouchend=document.onmousemove=document.ontouchmove=null;
 			document.body.style.cursor="";
 			elmnt.style.cursor="grab";
 		};
